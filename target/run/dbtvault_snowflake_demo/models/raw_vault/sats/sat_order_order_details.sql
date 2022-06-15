@@ -1,0 +1,9 @@
+begin;
+    
+
+        insert into DV_PROTOTYPE_DB.DEMO.sat_order_order_details ("ORDER_PK", "ORDER_HASHDIFF", "ORDERSTATUS", "TOTALPRICE", "ORDERDATE", "ORDERPRIORITY", "CLERK", "SHIPPRIORITY", "ORDER_COMMENT", "EFFECTIVE_FROM", "LOAD_DATE", "RECORD_SOURCE")
+        (
+            select "ORDER_PK", "ORDER_HASHDIFF", "ORDERSTATUS", "TOTALPRICE", "ORDERDATE", "ORDERPRIORITY", "CLERK", "SHIPPRIORITY", "ORDER_COMMENT", "EFFECTIVE_FROM", "LOAD_DATE", "RECORD_SOURCE"
+            from DV_PROTOTYPE_DB.DEMO.sat_order_order_details__dbt_tmp
+        );
+    commit;

@@ -1,0 +1,9 @@
+begin;
+    
+
+        insert into DV_PROTOTYPE_DB.DEMO.sat_inv_part_details ("PART_PK", "PART_HASHDIFF", "PART_NAME", "PART_MFGR", "PART_BRAND", "PART_TYPE", "PART_SIZE", "PART_CONTAINER", "PART_RETAILPRICE", "PART_COMMENT", "EFFECTIVE_FROM", "LOAD_DATE", "RECORD_SOURCE")
+        (
+            select "PART_PK", "PART_HASHDIFF", "PART_NAME", "PART_MFGR", "PART_BRAND", "PART_TYPE", "PART_SIZE", "PART_CONTAINER", "PART_RETAILPRICE", "PART_COMMENT", "EFFECTIVE_FROM", "LOAD_DATE", "RECORD_SOURCE"
+            from DV_PROTOTYPE_DB.DEMO.sat_inv_part_details__dbt_tmp
+        );
+    commit;
