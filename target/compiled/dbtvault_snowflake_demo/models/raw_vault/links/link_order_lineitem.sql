@@ -6,7 +6,7 @@ WITH row_rank_1 AS (
                PARTITION BY rr."LINK_LINEITEM_ORDER_PK"
                ORDER BY rr."LOAD_DATE"
            ) AS row_number
-    FROM DV_PROTOTYPE_DB.DEMO.v_stg_orders AS rr
+    FROM DV_PROTOTYPE_DB.dbt_tacharya.v_stg_orders AS rr
     WHERE rr."LINK_LINEITEM_ORDER_PK" IS NOT NULL
     AND rr."ORDER_PK" IS NOT NULL
     AND rr."LINEITEM_PK" IS NOT NULL
@@ -16,9 +16,6 @@ WITH row_rank_1 AS (
 records_to_insert AS (
     SELECT a."LINK_LINEITEM_ORDER_PK", a."ORDER_PK", a."LINEITEM_PK", a."LOAD_DATE", a."RECORD_SOURCE"
     FROM row_rank_1 AS a
-    LEFT JOIN DV_PROTOTYPE_DB.DEMO.link_order_lineitem AS d
-    ON a."LINK_LINEITEM_ORDER_PK" = d."LINK_LINEITEM_ORDER_PK"
-    WHERE d."LINK_LINEITEM_ORDER_PK" IS NULL
 )
 
 SELECT * FROM records_to_insert

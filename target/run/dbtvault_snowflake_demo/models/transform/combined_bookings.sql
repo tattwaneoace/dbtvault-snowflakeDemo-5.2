@@ -1,5 +1,5 @@
 
-  create or replace  view DV_PROTOTYPE_DB.DEMO.combined_bookings
+  create or replace  view DV_PROTOTYPE_DB.dbt_tacharya.combined_bookings 
   
    as (
     
@@ -7,12 +7,12 @@
         (
             select
 
-                cast('DV_PROTOTYPE_DB.DEMO.bookings_1' as 
+                cast('DV_PROTOTYPE_DB.dbt_tacharya.bookings_1' as 
     varchar
 ) as _dbt_source_relation,
                 
 
-            from DV_PROTOTYPE_DB.DEMO.bookings_1
+            from DV_PROTOTYPE_DB.dbt_tacharya.bookings_1
         )
 
         union all
@@ -21,12 +21,12 @@
         (
             select
 
-                cast('DV_PROTOTYPE_DB.DEMO.bookings_2' as 
+                cast('DV_PROTOTYPE_DB.dbt_tacharya.bookings_2' as 
     varchar
 ) as _dbt_source_relation,
                 
 
-            from DV_PROTOTYPE_DB.DEMO.bookings_2
+            from DV_PROTOTYPE_DB.dbt_tacharya.bookings_2
         )
 
         

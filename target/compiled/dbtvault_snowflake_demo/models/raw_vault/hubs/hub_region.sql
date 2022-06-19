@@ -6,7 +6,7 @@ WITH row_rank_1 AS (
                PARTITION BY rr."REGION_PK"
                ORDER BY rr."LOAD_DATE"
            ) AS row_number
-    FROM DV_PROTOTYPE_DB.DEMO.v_stg_orders AS rr
+    FROM DV_PROTOTYPE_DB.dbt_tacharya.v_stg_orders AS rr
     WHERE rr."REGION_PK" IS NOT NULL
     QUALIFY row_number = 1
 ),
@@ -17,7 +17,7 @@ row_rank_2 AS (
                PARTITION BY rr."REGION_PK"
                ORDER BY rr."LOAD_DATE"
            ) AS row_number
-    FROM DV_PROTOTYPE_DB.DEMO.v_stg_inventory AS rr
+    FROM DV_PROTOTYPE_DB.dbt_tacharya.v_stg_inventory AS rr
     WHERE rr."REGION_PK" IS NOT NULL
     QUALIFY row_number = 1
 ),
@@ -42,9 +42,6 @@ row_rank_union AS (
 records_to_insert AS (
     SELECT a."REGION_PK", a."REGION_KEY", a."LOAD_DATE", a."RECORD_SOURCE"
     FROM row_rank_union AS a
-    LEFT JOIN DV_PROTOTYPE_DB.DEMO.hub_region AS d
-    ON a."REGION_PK" = d."REGION_PK"
-    WHERE d."REGION_PK" IS NULL
 )
 
 SELECT * FROM records_to_insert

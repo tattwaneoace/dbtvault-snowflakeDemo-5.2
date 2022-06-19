@@ -6,7 +6,7 @@ WITH row_rank_1 AS (
                PARTITION BY rr."INVENTORY_ALLOCATION_PK"
                ORDER BY rr."LOAD_DATE"
            ) AS row_number
-    FROM DV_PROTOTYPE_DB.DEMO.v_stg_orders AS rr
+    FROM DV_PROTOTYPE_DB.dbt_tacharya.v_stg_orders AS rr
     WHERE rr."INVENTORY_ALLOCATION_PK" IS NOT NULL
     AND rr."PART_PK" IS NOT NULL
     AND rr."SUPPLIER_PK" IS NOT NULL
@@ -17,9 +17,6 @@ WITH row_rank_1 AS (
 records_to_insert AS (
     SELECT a."INVENTORY_ALLOCATION_PK", a."PART_PK", a."SUPPLIER_PK", a."LINEITEM_PK", a."LOAD_DATE", a."RECORD_SOURCE"
     FROM row_rank_1 AS a
-    LEFT JOIN DV_PROTOTYPE_DB.DEMO.link_inventory_allocation AS d
-    ON a."INVENTORY_ALLOCATION_PK" = d."INVENTORY_ALLOCATION_PK"
-    WHERE d."INVENTORY_ALLOCATION_PK" IS NULL
 )
 
 SELECT * FROM records_to_insert

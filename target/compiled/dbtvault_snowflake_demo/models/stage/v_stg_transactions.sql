@@ -22,7 +22,7 @@ WITH source_data AS (
     "AMOUNT",
     "TYPE"
 
-    FROM DV_PROTOTYPE_DB.DEMO.raw_transactions
+    FROM DV_PROTOTYPE_DB.dbt_tacharya.raw_transactions
 ),
 
 derived_columns AS (

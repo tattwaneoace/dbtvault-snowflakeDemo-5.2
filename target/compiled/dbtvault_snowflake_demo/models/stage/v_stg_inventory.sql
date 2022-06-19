@@ -41,7 +41,7 @@ WITH source_data AS (
     "SUPPLIER_REGION_NAME",
     "SUPPLIER_REGION_COMMENT"
 
-    FROM DV_PROTOTYPE_DB.DEMO.raw_inventory
+    FROM DV_PROTOTYPE_DB.dbt_tacharya.raw_inventory
 ),
 
 derived_columns AS (

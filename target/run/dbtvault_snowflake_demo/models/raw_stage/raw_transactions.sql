@@ -1,5 +1,5 @@
 
-  create or replace  view DV_PROTOTYPE_DB.DEMO.raw_transactions
+  create or replace  view DV_PROTOTYPE_DB.dbt_tacharya.raw_transactions 
   
    as (
     SELECT

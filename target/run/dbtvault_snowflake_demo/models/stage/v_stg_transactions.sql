@@ -1,5 +1,5 @@
 
-  create or replace  view DV_PROTOTYPE_DB.DEMO.v_stg_transactions
+  create or replace  view DV_PROTOTYPE_DB.dbt_tacharya.v_stg_transactions 
   
    as (
     
@@ -26,7 +26,7 @@ WITH source_data AS (
     "AMOUNT",
     "TYPE"
 
-    FROM DV_PROTOTYPE_DB.DEMO.raw_transactions
+    FROM DV_PROTOTYPE_DB.dbt_tacharya.raw_transactions
 ),
 
 derived_columns AS (

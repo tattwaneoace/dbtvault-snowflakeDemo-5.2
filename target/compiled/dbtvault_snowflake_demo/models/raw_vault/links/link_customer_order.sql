@@ -6,7 +6,7 @@ WITH row_rank_1 AS (
                PARTITION BY rr."ORDER_CUSTOMER_PK"
                ORDER BY rr."LOAD_DATE"
            ) AS row_number
-    FROM DV_PROTOTYPE_DB.DEMO.v_stg_orders AS rr
+    FROM DV_PROTOTYPE_DB.dbt_tacharya.v_stg_orders AS rr
     WHERE rr."ORDER_CUSTOMER_PK" IS NOT NULL
     AND rr."CUSTOMER_PK" IS NOT NULL
     AND rr."ORDER_PK" IS NOT NULL
@@ -16,9 +16,6 @@ WITH row_rank_1 AS (
 records_to_insert AS (
     SELECT a."ORDER_CUSTOMER_PK", a."CUSTOMER_PK", a."ORDER_PK", a."LOAD_DATE", a."RECORD_SOURCE"
     FROM row_rank_1 AS a
-    LEFT JOIN DV_PROTOTYPE_DB.DEMO.link_customer_order AS d
-    ON a."ORDER_CUSTOMER_PK" = d."ORDER_CUSTOMER_PK"
-    WHERE d."ORDER_CUSTOMER_PK" IS NULL
 )
 
 SELECT * FROM records_to_insert

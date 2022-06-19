@@ -6,7 +6,7 @@ WITH row_rank_1 AS (
                PARTITION BY rr."LINK_SUPPLIER_NATION_PK"
                ORDER BY rr."LOAD_DATE"
            ) AS row_number
-    FROM DV_PROTOTYPE_DB.DEMO.v_stg_inventory AS rr
+    FROM DV_PROTOTYPE_DB.dbt_tacharya.v_stg_inventory AS rr
     WHERE rr."LINK_SUPPLIER_NATION_PK" IS NOT NULL
     AND rr."SUPPLIER_PK" IS NOT NULL
     AND rr."NATION_PK" IS NOT NULL
@@ -16,9 +16,6 @@ WITH row_rank_1 AS (
 records_to_insert AS (
     SELECT a."LINK_SUPPLIER_NATION_PK", a."SUPPLIER_PK", a."NATION_PK", a."LOAD_DATE", a."RECORD_SOURCE"
     FROM row_rank_1 AS a
-    LEFT JOIN DV_PROTOTYPE_DB.DEMO.link_supplier_nation AS d
-    ON a."LINK_SUPPLIER_NATION_PK" = d."LINK_SUPPLIER_NATION_PK"
-    WHERE d."LINK_SUPPLIER_NATION_PK" IS NULL
 )
 
 SELECT * FROM records_to_insert

@@ -1,5 +1,5 @@
 
-  create or replace  view DV_PROTOTYPE_DB.DEMO.v_stg_orders
+  create or replace  view DV_PROTOTYPE_DB.dbt_tacharya.v_stg_orders 
   
    as (
     
@@ -56,7 +56,7 @@ WITH source_data AS (
     "CUSTOMER_REGION_NAME",
     "CUSTOMER_REGION_COMMENT"
 
-    FROM DV_PROTOTYPE_DB.DEMO.raw_orders
+    FROM DV_PROTOTYPE_DB.dbt_tacharya.raw_orders
 ),
 
 derived_columns AS (

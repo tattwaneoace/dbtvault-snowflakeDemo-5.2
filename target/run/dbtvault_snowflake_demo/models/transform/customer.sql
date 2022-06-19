@@ -1,10 +1,10 @@
 
-  create or replace  view DV_PROTOTYPE_DB.DEMO.customer
+  create or replace  view DV_PROTOTYPE_DB.dbt_tacharya.customer 
   
    as (
     SELECT ID 
     , FIRST_NAME
     , LAST_NAME
     , birthdate
-FROM DV_PROTOTYPE_DB.DEMO.customers
+FROM DV_PROTOTYPE_DB.dbt_tacharya.customers
   );

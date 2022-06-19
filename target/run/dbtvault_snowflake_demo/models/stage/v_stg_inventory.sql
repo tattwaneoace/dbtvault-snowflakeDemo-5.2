@@ -1,5 +1,5 @@
 
-  create or replace  view DV_PROTOTYPE_DB.DEMO.v_stg_inventory
+  create or replace  view DV_PROTOTYPE_DB.dbt_tacharya.v_stg_inventory 
   
    as (
     
@@ -45,7 +45,7 @@ WITH source_data AS (
     "SUPPLIER_REGION_NAME",
     "SUPPLIER_REGION_COMMENT"
 
-    FROM DV_PROTOTYPE_DB.DEMO.raw_inventory
+    FROM DV_PROTOTYPE_DB.dbt_tacharya.raw_inventory
 ),
 
 derived_columns AS (
