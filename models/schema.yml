@@ -7,6 +7,12 @@ sources:
     tables:
       - name: LINEITEM
       - name: CUSTOMER
+        columns:
+        - name: custkey
+          tests:
+          - relationships:
+              to: ref('ORDERS')
+              field: custkey
       - name: ORDERS
       - name: PARTSUPP
       - name: SUPPLIER
